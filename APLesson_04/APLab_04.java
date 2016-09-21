@@ -31,15 +31,31 @@ public class APLab_04
 		double price3 = keyboard.nextDouble();
 		keyboard.nextLine();
 		
+		System.out.println("<<<<<<<<<<<<<<<<<__Receipt__>>>>>>>>>>>>>>>>>");
+		
 		form.format(item1, price1);
 		form.format(item2, price2);
 		form.format(item3, price3);
+		
+		double Subtotal = price1+price2+price3;
+		form.format("Subtotal:", Subtotal);
+		
+		double Tax = .08 * Subtotal;
+		form.format("Tax:", Tax);
+		
+		double Total = Subtotal + Tax;
+		form.format("Total:", Total);
+		
+		System.out.println("______________________________________________");
+		System.out.println(" *        Thank you for your support         * ");
+		
+		
 	}
 	
 	//create a method that print formats your 3 items
 	public void format(String item, double price)
 	{
-		System.out.printf("\n%10s ..........  %10.2f", item, price);
+		System.out.printf("* %20s ..........  %10.2f\n", item, price);
 	}
 }
 	
