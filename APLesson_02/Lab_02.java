@@ -8,12 +8,20 @@ public class Lab_02
 		
 		System.out.println(num1 + " multiplied by " + num2 + " is " +" "+ answer);
 		
+		
+		
+		
 		String name = "Mona Roshan";
 		String address = "10758 Gallop Crest Court";
 		String city = "San Diego,CA";
 		String zip = "92130";
 		
-		System.out.println(name + "'s address is" +" "+ address +" "+ city +" "+ zip);
+		System.out.println(name);
+		System.out.println(address);
+		System.out.println(city + " " + zip);
+		
+		
+		
 		
 		int w = 3;
 		int l = 5;
