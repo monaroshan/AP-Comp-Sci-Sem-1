@@ -2,8 +2,8 @@ import java.util.Scanner;
 public class Exercise_06
 {
 	static Scanner kb;
-	static username = monaroshan
-	static password = password
+	static String username = "monaroshan";
+	static String password = "mona";
 	
 	public static void main(String[]args)
 	{
@@ -20,16 +20,19 @@ public class Exercise_06
 		String pass = kb.next();
 		kb.nextLine();
 		
-		if(user.equals(username))
+		if(user.equals(username) && pass.equals(password))
 		{
-			if(pass.equals(password))
-				System.out.println("You are granted access! ");
-			else if (pass != )
-				System.out.println("Wrong!");
+			System.out.println("You are granted access! ");
+				
 		}
 		else
 		{
-			System.out.println("!");
+			if(user.equals(username))
+				System.out.print("Your password is incorrect!");	
+			else if(pass.equals(password))
+				System.out.print("Your username is incorrect!");
+			else 
+				System.out.println("Your username and password are incorrect!");
 			passCheck();
 		}
 	}
