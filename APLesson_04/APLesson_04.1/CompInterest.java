@@ -3,30 +3,25 @@ public class CompInterest
 {
 	public static void main(String[]args)
 	{
-	Scanner keyboard = new Scanner(System.in);
-	CompInterest loan = new CompInterest();
-	
-	System.out.println("Please enter the rate of interest:");
-	double rate = keyboard.nextDouble();
-	keyboard.nextLine();
-	
-	System.out.println("Please enter the principal:");
-	double princpl = keyboard.nextDouble();
-	keyboard.nextLine();
-	
-	System.out.println("Please enter the time in years:");
-	double time = keyboard.nextDouble();
-	keyboard.nextLine();
-	
-	System.out.println("Please enter the number of times per year interest is compounded:");
-	double number = keyboard.nextDouble();
-	keyboard.nextLine();
-	
-	System.out.println("Your monthly payment will be " + loan.payment(rate, princpl, time, number));
+		Scanner keyboard = new Scanner(System.in);
+		
+		System.out.println("Please enter the rate of interest:");
+		double rate = keyboard.nextDouble();
+		
+		System.out.println("Please enter the principal:");
+		double princpl = keyboard.nextDouble();
+		
+		System.out.println("Please enter the time in years:");
+		double time = keyboard.nextDouble();
+		
+		System.out.println("Please enter the number of times per year interest is compounded:");
+		double number = keyboard.nextDouble();
+		
+		System.out.println("Your monthly payment will be " + payment(rate, princpl, time, number));
 	}
 	
-	public double payment(double r, double p, double t, double n)
+	public static double payment(double r, double p, double t, double n)
 	{
-		return Math.pow((1+(r/n)), (n*t)) *p;
+		return (p*Math.pow(1 + r/n, n*t))/(t*12);
 	}
 }
