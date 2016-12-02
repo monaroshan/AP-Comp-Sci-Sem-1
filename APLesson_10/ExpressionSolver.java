@@ -32,7 +32,12 @@ public class ExpressionSolver
 				equation.remove(i-1);
 				equation.remove(i);
 			}
-		
+			
+			else
+				i++;
+		}
+		while(i < equation.size())
+		{
 			if(i < equation.size() && (equation.get(i).equals("+") || i < equation.size() && equation.get(i).equals("-")))
 			{
 				if(equation.get(i).equals("+"))
@@ -51,6 +56,7 @@ public class ExpressionSolver
 				i++;
 		
 		}
+	
 	return equation;
 	}
 }
