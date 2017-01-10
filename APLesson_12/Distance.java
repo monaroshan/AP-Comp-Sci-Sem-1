@@ -12,7 +12,6 @@ public class Distance
 		xTwo = 0;
 		yTwo = 0;
 	}
-	
 	public Distance(int x1, int y1, int x2, int y2)
 	{
 		xOne = x1;
@@ -21,7 +20,6 @@ public class Distance
 		yTwo = y2;
 		distance = 0;
 	}
-	
 	public void setPoints(int x1, int y1, int x2, int y2)
 	{
 		xOne = x1;

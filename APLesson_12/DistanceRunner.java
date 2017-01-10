@@ -16,7 +16,7 @@ public class DistanceRunner
 		Distance object = new Distance(xOne, yOne, xTwo, yTwo);
 		System.out.println( "distance = " + object.getDistance());
 		
-		object.setPoints(7, 8, 9, 10);
+		object.setPoints(xOne, yOne, xTwo, yTwo);
 		System.out.println( "distance = " + object.getDistance());
 		
 	}
