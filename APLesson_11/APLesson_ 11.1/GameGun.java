@@ -79,7 +79,6 @@ public class GameGun
 		for(int i = 0; i < CLIPSIZE; i++)
 		{
 			output += clip[i];
-			
 		}
 		
 		System.out.println(output);
