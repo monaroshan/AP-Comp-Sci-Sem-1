@@ -20,4 +20,9 @@ public class Coin extends Money
 		return "Weight:" + weight + "g\n" +
 				super.toString();
 	}
+	
+		public String scan()
+	{
+		return weight;
+	}
 }

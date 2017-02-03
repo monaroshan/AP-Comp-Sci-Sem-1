@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CountingMachine
+ArrayList<Toy> toyList = new ArrayList<Toy>();
+
+public class ToyStore
 {
-	
 	public static void main(String[]args)
 	{
-		double total = 0;
-		ArrayList<Money> inventory = new ArrayList<Money>();
+		ArrayList<Toy> toyList = new ArrayList<Toy>();
 		inventory.add(new Coin("Penny", "2.5g", 00.01));
 		inventory.add(new Coin("Nickel", "5.0g", 00.05));
 		inventory.add(new Coin("Dime", "2.268g", 00.10));

@@ -39,10 +39,7 @@ public abstract class Money
 		return count;
 	}
 	
-	public String scan()
-	{
-		return weight;
-	}
+	
 	public String toString()
 	{
 		return "Your " + name + " is worth $" + value + ".\n";
