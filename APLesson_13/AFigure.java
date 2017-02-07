@@ -5,23 +5,15 @@ public class AFigure extends Toy
 	public AFigure()
 	{
 		super();
-		AFigure = "";
 	}
 	
-	public AFigure(String n, String af)
+	public AFigure(String n)
 	{
 		super(n);
-		AFigure = af;
 	}
 	
 	public String getType()
 	{
-		return AFigure; 
-	}
-	
-	public String toString()
-	{
-		return "Action Figure: " + AFigure + "\n" +
-				super.toString();
+		return "Action Figure"; 
 	}
 }

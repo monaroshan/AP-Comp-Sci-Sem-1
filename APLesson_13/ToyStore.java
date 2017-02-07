@@ -1,47 +1,101 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-ArrayList<Toy> toyList = new ArrayList<Toy>();
+ArrayList <Toy> toyList;
 
 public class ToyStore
 {
-	public static void main(String[]args)
+	public ToyStore()
 	{
-		ArrayList<Toy> toyList = new ArrayList<Toy>();
-		inventory.add(new Coin("Penny", "2.5g", 00.01));
-		inventory.add(new Coin("Nickel", "5.0g", 00.05));
-		inventory.add(new Coin("Dime", "2.268g", 00.10));
-		inventory.add(new Coin("Quarter", "5.670g", 00.25));
-		inventory.add(new WhatisInheritance("One", "Washington", 01.00));
-		inventory.add(new WhatisInheritance("Five", "Lincoln", 05.00));
-		inventory.add(new WhatisInheritance("Ten", "Hamilton", 10.00));
-		inventory.add(new WhatisInheritance("Twenty", "Jackson", 20.00));
-		inventory.add(new WhatisInheritance("Hundred", "Franklin", 100.00));
+		toyList = new ArrayList<Toy>();
+	}
+	
+	public ToyStore(String ts)
+	{
+		toyList = ts;
+		loadToys();
+	}
+	
+	public loadToys(String ts)
+	{
+		ArrayList <String> toys = new ArrayList<String>(Arrays.asList(ts.split(", ")));
 		
-		Scanner kb = new Scanner(System.in);
-		System.out.println("Please enter your bills and coins...");
-		String cash = kb.nextLine();
-		
-		Scanner scan = new Scanner(cash);
-		
-		while(scan.hasNext())
+		for(int i = 0; i< toys.size; i+=2)
 		{
-			String x = scan.next();
-			
-			for(Money b : inventory)
+			String name = toys.get(i);
+			String type = toys.get(i+1);
+			Toy t = getThatToy(name);
+			if(t == null)
 			{
-				if(b.scan().equals(x) || b.getName().equals(x))
+				if(t.getType().equals("Car"))
 				{
-					b.setCount(b.getCount()+1);
+					toyList.add(new Car(name));
+				}
+				if(t.getType().equals("Action Figure"))
+				{
+					toyList.add(new AFigure(name));
 				}
 			}
+			else
+			{
+				t.setCount(t.getCount() + 1); 
+			}
 		}
-		for(Money x : inventory)
+
+	}
+	
+	public static toy getThatToy(String nm)
+	{
+		for(Toy t : toyList)
 		{
-			//String x = scan.next();
-			total += x.getValue() * x.getCount();
+			if (t.getName().equals(nm)) 
+			{
+				return t;
+			}
+		}
+		return null;
+	}
+	
+	public getMostFrequestToy()
+	{
+		String Name = "";
+		int max = Integer.MIN_VALUE;
+		for (Toy t : toyList)
+		{
+			if (max < t.getCount())
+			{
+				max = t.getCount();
+				name = t.getCount();
+		}
+	}
+	return name;
+	
+	public getMostFrequentType()
+	{
+		int cars = 0;
+		int figures = 0;
+		for (Toy t : toyList)
+		{
+			if (t.getType().equals("Car"))
+			{
+				cars++;
+			}
+			if(t.getType().equals("Action Figure"))
+			{
+				figures++;
+			}
 		}
 		
-		System.out.println(total);
+		if(cars < figures)
+		{
+			if(cars == figures)
+				return "Equal amounts of action figures and cars!";
+			else
+				return "Cars";
+		}
+	
+	public String toString()
+	{
+		return toyList;
 	}
 }

@@ -5,23 +5,15 @@ public class Car extends Toy
 	public Car()
 	{
 		super();
-		this.car = "";
 	}
 	
-	public Car(String n, String c)
+	public Car(String n)
 	{
 		super(n);
-		this.car = c;
-	}
-	
-	public String toString()
-	{
-		return "Car:" + car + "\n" +
-				super.toString();
 	}
 	
 	public String getType()
 	{
-		return car;
+		return "Car";
 	}
 }
