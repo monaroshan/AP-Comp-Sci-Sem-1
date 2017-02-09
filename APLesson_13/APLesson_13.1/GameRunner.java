@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class ToyStoreRunner 
+public class GameRunner 
 {
 	public static void main(String[]args)
 	{

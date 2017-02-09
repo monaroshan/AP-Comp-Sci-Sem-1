@@ -40,7 +40,7 @@ public abstract class Toy
 	
 	public String toString()
 	{
-		return "There are " + count + " of " + name + " in the system.\n" ;
+		return "" + name + ", Count = " + count + "\n" ;
 	}
 	
 }
