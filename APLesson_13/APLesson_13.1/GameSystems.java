@@ -12,7 +12,7 @@ public abstract class GameSystems
 	public GameSystems(String p)
 	{
 		this.platform = p;
-		this.serialNo = 1234567;
+		this.serialNo = (int) (Math.random() * 10000000) + 1;
 	}
 	
 	public String getPlatform()

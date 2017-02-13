@@ -3,15 +3,13 @@ public class GameRunner
 {
 	public static void main(String[]args)
 	{
-		String listoftoys = "";
-		Scanner kb = new Scanner(System.in);
-		System.out.println("Enter in the list of toys: ");
-		listoftoys = kb.nextLine();
+		PlayStation ps = new PlayStation("PS4");
+		System.out.println(ps);
 		
-		ToyStore TS = new ToyStore(listoftoys);
-		System.out.println(TS);
-		System.out.println("Most Frequent Toy: " + TS.getMostFrequentToy());
-		System.out.println("Most Frequest Type of Toy: " + TS.getMostFrequentType());
+		XBox xb = new XBox("XBox 360");
+		System.out.println(xb);
 		
+		PlayStation ps1 = new PlayStation("PS3");
+		System.out.println(ps1);
 	}
 }
