@@ -1,6 +1,6 @@
 public abstract class Ticket 
 {
-	private int serialNo;
+	private int serialNo, price;
 
 	public Ticket()
 	{
