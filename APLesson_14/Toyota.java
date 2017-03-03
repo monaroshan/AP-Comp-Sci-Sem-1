@@ -11,6 +11,10 @@ public class Toyota implements Location
 	
 	public Toyota(String c)
 	{
+		//location = new double[2];
+		//String[] locs = l.split(", ");
+		//location[0] = Double.parseDouble(locs[0]);
+		//location[1] = Double.parseDouble(locs[1]);
 		xCoord = Double.parseDouble(c.substring(0,1));
 		yCoord = Double.parseDouble(c.substring(3));
 	}
