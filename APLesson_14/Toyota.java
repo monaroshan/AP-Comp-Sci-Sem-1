@@ -1,7 +1,6 @@
 public class Toyota implements Location
 {
 	private double[] location;
-	
 	private double xCoord;
 	private double yCoord;
 	
