@@ -35,13 +35,16 @@ public class Satellite2
         printout += "\n\n" + "==========================";
         i = 0;
         
-		for(Car l : locate) 
+		for(location2 l : locate) 
 		{
-            double[] newPos = l.getLoc();
-            double x = newPos[0], y = newPos[1];
-            printout += "\n\nAfter " + l.getID() + " moved (" + position[i] + ", " + position[i+1] + ")"
-            + "\nNew location: " + "(" + x + ", " + y + ")" + "\n";
-            i += 2;
+            double one = Math.random() * 99 + 1;
+			double two = Math.random() * 99 + 1;
+			l.move(one, two);
+			
+			
+            printout += "\n\nAfter " + l.getID() + " moved (" + one + ", " + two + ")"
+            + "\nNew location: " + "(" + one + ", " + two + ")" + "\n";
+			
         }
         printout += "\n" + "==========================" + "\nDistance from home...";
         
