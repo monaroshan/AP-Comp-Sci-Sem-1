@@ -1,9 +1,9 @@
-public class GMC2 extends Car
+public class GMC extends Car
 {
 	private double xCoord;
 	private double yCoord;
 	
-	public GMC2(double x, double y)
+	public GMC(double x, double y)
 	{
 		super();
 		move(x,y);

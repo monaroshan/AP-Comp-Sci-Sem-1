@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-public class Toyota2 extends Car 
+public class Toyota extends Car 
 {
 	private double xCoord;
 	private double yCoord;
 	
-    public Toyota2(String pos) 
+    public Toyota(String pos) 
 	{
         super();
         ArrayList<String> position = new ArrayList<>(Arrays.asList(pos.split(", ")));

@@ -1,4 +1,4 @@
-public abstract class Car implements location2
+public abstract class Car implements Location
 {
 	private int ID;
 	private double[] location;

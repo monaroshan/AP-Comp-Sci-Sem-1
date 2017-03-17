@@ -1,4 +1,4 @@
-public interface location2
+public interface Location
 {
 	double[] getLoc();
 	int getID();
