@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class Magpie2
 {
 	/** Get a default greeting @return a greeting*/
@@ -14,7 +15,13 @@ public class Magpie2
 	public String getResponse(String statement)
 	{
 		String response = "";
-
+		
+		if (statement.length() == 0)
+		{
+			return "Say something, please";
+		}
+		
+		
 		/** Exercise_01:
 		 * ==================================================
 		 * 	Code that asks the user "Say something, please."
@@ -38,6 +45,7 @@ public class Magpie2
 		{
 			response = "Tell me more about your family.";
 		}
+		
 
 		/** Exercise_03(Final)
 		 * ==================================================
@@ -49,6 +57,19 @@ public class Magpie2
 		 * Create addtional code (another else if) that
 		 * responds "He sounds like a pretty dank teacher"
 		 * if you mention "Robinette" in your statement */
+		 
+		 else if (statement.indexOf("dog") >= 0
+				|| statement.indexOf("cat") >= 0
+				|| statement.indexOf("turtle") >= 0
+				|| statement.indexOf("fish") >= 0)
+		{
+			response = "Tell me more about your pets.";
+		}
+		
+		else if (statement.indexOf("Robinette") >= 0)
+		{
+			response = "He sounds like a pretty dank teacher.";
+		}
 
 		else
 		{
@@ -61,6 +82,35 @@ public class Magpie2
 	 * ========================================================= */
 	private int findKeyword(String statement, String goal, int startPos)
 	{
+			String phrase = statement.trim();
+			int psn = phrase.toLowerCase().indexOf(goal.toLowerCase(), startPos);
+			
+			while(psn >= 0)
+			{
+				String before = " ";
+				String after = " ";
+				if(psn > 0)
+				{
+					before = phrase.substring(psn - 1, psn).toLowerCase();
+				}
+				if (psn + goal.length() < phrase.length())
+				{
+					after = phrase.substring(psn + goal.length(),
+											 psn + goal.length() + 1).toLowerCase();
+				}
+				if(((before.compareTo("a") < 0 ) || (before.compareTo("z") > 0)) && ((after.compareTo("a") < 0 ) || (after.compareTo("z") > 0)))
+				{
+					return psn;
+				}
+				psn = phrase.indexOf(goal.toLowerCase(), psn + 1);
+			}
+			
+		
+		
+		
+		
+		
+		
 		/* New String variable phrase = a more searchable version of statement.
 		 	-Use a combination of trim() and toLowerCase() modify statement.
 
