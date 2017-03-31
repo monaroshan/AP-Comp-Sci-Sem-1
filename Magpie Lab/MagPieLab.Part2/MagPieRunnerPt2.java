@@ -13,7 +13,7 @@ public class MagPieRunnerPt2
 	 */
 	public static void main(String[] args)
 	{
-		Magpie3 maggie = new Magpie3();
+		MagPiePt2 maggie = new MagPiePt2();
 		
 		System.out.println (maggie.getGreeting());
 		Scanner in = new Scanner (System.in);

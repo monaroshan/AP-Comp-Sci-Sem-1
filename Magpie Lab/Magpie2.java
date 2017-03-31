@@ -38,10 +38,10 @@ public class Magpie2
 			response = "Why so negative?";
 		}
 
-		else if (findKeyword(statement, "mother",0) >= 0)
-				|| (findKeyword(statement, "father",0) >= 0)
-				|| (findKeyword(statement, "sister",0) >= 0)
-				|| (findKeyword(statement, "brother",0) >= 0)
+		else if (findKeyword(statement, "mother",0) >= 0
+				|| findKeyword(statement, "father",0) >= 0
+				|| findKeyword(statement, "sister",0) >= 0
+				|| findKeyword(statement, "brother",0) >= 0)
 		{
 			response = "Tell me more about your family.";
 		}
@@ -58,10 +58,10 @@ public class Magpie2
 		 * responds "He sounds like a pretty dank teacher"
 		 * if you mention "Robinette" in your statement */
 		 
-		 else if (findKeyword(statement, "dog",0) >= 0)
-				|| (findKeyword(statement, "cat",0)>= 0)
-				|| (findKeyword(statement, "turtle",0) >= 0)
-				|| (findKeyword(statement, "frog",0)>= 0)
+		 else if (findKeyword(statement, "dog",0) >= 0
+				|| findKeyword(statement, "cat",0) >= 0
+				|| findKeyword(statement, "turtle",0) >= 0
+				|| findKeyword(statement, "frog",0)>= 0)
 		{
 			response = "Tell me more about your pets.";
 		}
