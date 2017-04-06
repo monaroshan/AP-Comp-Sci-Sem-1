@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class MagPiePt2
+public class MagPie3
 {
 	/** Get a default greeting @return a greeting*/
 	public String getGreeting()
@@ -120,28 +120,9 @@ public class MagPiePt2
 		int psn = findKeyword(statement, "I want to",0);
 		String restOfStatement = statement.substring(psn + 9);
 		return "What would it mean to" + restOfStatement + "?";
-		
-	  /**
-	   * trim the statement
-	   * variable lastChar = last character in statement
-	   * if lastChar is a period...
-	   *        remove the last character from statement
-	   *
-	   * Set new int psn to the result from...
-	   *        findKeyword() method @param statement, goal is "I want to "
-	   * Set new String restOfStatement to the rest of statement after the
-	   * "I want to ".
-	   * /
-	   * return "What would it mean to" + restOfStatement; **/
 	}
 
 
-	/**
-	* Take a statement with "you <something> me" and transform it into
-	* "What makes you think that I <something> you?"
-	* @param statement the user statement, assumed to contain "you" followed by "me"
-	* @return the transformed statement
-	*/
 	private String transformYouMeStatement(String statement)
 	{
 		statement = statement.trim();
@@ -155,22 +136,21 @@ public class MagPiePt2
 		int psnOfMe = findKeyword(statement, "me", psnOfYou + 3);
 		String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe);
 		return "What makes you think that I" + restOfStatement + "you?";
-		
-	  /**
-	   * trim the statement
-	   * Set new String lastChar to the last character in statement
-	   * if lastChar is a period...
-	   *        remove the period
-	   *
-	   * Set new int psnOfYou to the result of findKeyword
-	   *        @param statement and "you"
-	   * Set new int psnOfMe to the result of findKeyword
-	   *      @param statement, "me", and psnOfYou + 3
-	   * Set new String restOfStatement to the rest of statement after "You" + 3,
-	   * and before "me".
-	   *
-	   * return "What makes you think that I " + restOfStatement + "you?"
-	   * */
+	}
+	
+	private String transformIYouStatement(String statement)
+	{
+		statement = statement.trim();
+		String lastChar = statement.substring(statement.length() -1);
+		if(lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement.length()-1);
+		}
+
+		int psnOfI = findKeyword("I", statement,0);
+		int psnOfYou = findKeyword(psnOfI + 3, statement, "you.");
+		String restOfStatement = statement.substring(psnOfI + 3, psnOfYou);
+		return "Why do you" + restOfStatement + "me?";
 	}
 
 	/** Ex_02: The findKeyword() Method...
