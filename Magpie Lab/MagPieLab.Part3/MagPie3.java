@@ -86,20 +86,21 @@ public class MagPie3
 		// Look for a two word (you <something> me)
 		// pattern
 			int psn = findKeyword(statement, "you", 0);
-
-
-			if (psn >= 0
-				&& findKeyword(statement, "me", psn) >= 0)
+			if (psn >= 0 && findKeyword(statement, "me", psn) >= 0)
 			{
 				response = transformYouMeStatement(statement);
 			}
 			else
 			{
-				response = getRandomResponse();
+				psn = findKeyword(statement, "I", 0);
+				if(psn >=0 && findKeyword(statement, "you", psn) >=0)
+					response = transformIYouStatement(statement);
+				else
+					response = getRandomResponse();
+
 			}
 		}
 		return response;
-		
 	}
 	
 	/**
@@ -134,53 +135,53 @@ public class MagPie3
 
 		int psnOfYou = findKeyword(statement, "you",0);
 		int psnOfMe = findKeyword(statement, "me", psnOfYou + 3);
-		String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe);
+		String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe).trim();
 		return "What makes you think that I" + restOfStatement + "you?";
 	}
 	
 	private String transformIYouStatement(String statement)
 	{
-		statement = statement.trim();
-		String lastChar = statement.substring(statement.length() -1);
+		String phrase = statement.trim().toLowerCase();
+		String lastChar = phrase.substring(phrase.length() -1);
 		if(lastChar.equals("."))
 		{
-			statement = statement.substring(0, statement.length()-1);
+			phrase = phrase.substring(0, phrase.length()-1);
 		}
-
-		int psnOfI = findKeyword("I", statement,0);
-		int psnOfYou = findKeyword(psnOfI + 3, statement, "you.");
-		String restOfStatement = statement.substring(psnOfI + 3, psnOfYou);
-		return "Why do you" + restOfStatement + "me?";
+		int psnOfI = findKeyword(statement, "I", 0);
+		int psnOfYou = findKeyword(phrase , "you", psnOfI + 1);
+		String restOfStatement = phrase.substring(psnOfI + 1, psnOfYou).trim();
+		return "Why do you " + restOfStatement + " me?";
 	}
 
 	/** Ex_02: The findKeyword() Method...
 	 * ========================================================= */
 	private int findKeyword(String statement, String goal, int startPos)
 	{
-			String phrase = statement.trim();
-			int psn = phrase.toLowerCase().indexOf(goal.toLowerCase(), startPos);
+			String phrase = statement.trim().toLowerCase();
+			goal = goal.trim().toLowerCase();
+			int psn = phrase.indexOf(goal, startPos);
 			
 			while(psn >= 0)
 			{
-				String before = " ";
-				String after = " ";
+				String before = "";
+				String after = "";
 				if(psn > 0)
 				{
-					before = phrase.substring(psn - 1, psn).toLowerCase();
+					before = phrase.substring(psn - 1, psn);
 				}
 				if (psn + goal.length() < phrase.length())
 				{
-					after = phrase.substring(psn + goal.length(),
-											 psn + goal.length() + 1).toLowerCase();
+					after = phrase.substring(psn + goal.length(),psn + goal.length() + 1);
 				}
-				if(((before.compareTo("a") < 0 ) || (before.compareTo("z") > 0)) && ((after.compareTo("a") < 0 ) || (after.compareTo("z") > 0)))
+				if((before.compareTo("a") < 0  || before.compareTo("z") > 0) && 
+					(after.compareTo("a") < 0 || after.compareTo("z") > 0))
 				{
 					return psn;
 				}
 				psn = phrase.indexOf(goal.toLowerCase(), psn + 1);
 			}
-			
-		
+			return -1;
+	}
 		
 		
 		
@@ -215,9 +216,7 @@ public class MagPie3
 
 				Otherwise, search for goal in phrase from psn + 1 forward */
 
-		return -1;
 
-	}
 
 	/** Override - this method is used if there are only 2 parameters...*/
 	private int findKeyword(String statement, String goal)
