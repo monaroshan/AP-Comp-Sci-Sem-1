@@ -386,7 +386,35 @@ public class Picture extends SimplePicture
   
   public void edgeDetection2(int edgeDist)
   {
-	  
+	Pixel leftPixel = null;
+    Pixel rightPixel = null;
+	Pixel topPixel = null;
+	Pixel bottomPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+    Color rightColor = null;
+	Color bottomColor = null;
+    for (int row = 0; row < pixels.length-1; row++)
+    {
+      for (int col = 0; 
+           col < pixels[0].length-1; col++)
+      {
+        leftPixel = pixels[row][col];
+        rightPixel = pixels[row][col+1];
+		topPixel = pixels[row][col];
+		bottomPixel = pixels[row+1][col];
+        rightColor = rightPixel.getColor();
+		bottomColor = bottomPixel.getColor();
+        if (leftPixel.colorDistance(rightColor) > edgeDist && topPixel.colorDistance(bottomColor) > edgeDist)
+		{
+			leftPixel.setColor(Color.BLACK);
+			topPixel.setColor(Color.BLACK);			}
+        else
+		{
+			leftPixel.setColor(Color.WHITE);
+			topPixel.setColor(Color.WHITE);
+		}
+      }
+    }
   }
     
   /* Main method for testing - each class in Java can have a main 
