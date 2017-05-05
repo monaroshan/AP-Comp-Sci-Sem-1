@@ -1,7 +1,9 @@
 /**
  * This is a class that tests the Deck class.
  */
-public class DeckTester {
+public class DeckTester 
+	
+{
 
 	/**
 	 * The main method in this class checks the Deck operations for consistency.
@@ -26,5 +28,17 @@ public class DeckTester {
 		int[] v3 = {2, 4, 13};
 		Deck d3 = new Deck(r3, s3, v3);
 		System.out.println("The third deck's dealt card is: " + d3.deal());
+		
+		String[] r = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
+		String[] s = {"Clubs", "Diamonds", "Spades", "Hearts"};
+		int[] v = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+		Deck d = new Deck(r, s, v);
+		//System.out.println(d);
+		System.out.println("The whole deck's dealt card is: " + d.deal());
+		
+		
 	}
+
+	
+	
 }
