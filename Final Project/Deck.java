@@ -8,11 +8,26 @@ import java.util.ArrayList;
  */
 public class Deck 
 	{
-
+		
+	Cards[] deck = new int[52];
+	int[] values = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+    String[] suits = {"Spades", "Hearts", "Diamonds", "Clubs"};
+    String[] ranks = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+	
+	for(int i = 0; i < deck.size; i++)
+	{
+		value = values[i];
+		rank = ranks[i];
+		for(String suit: suits)
+		{
+			deck[i] = new Cards(rank, suit, value);
+		}
+	}
+	
 	/**
 	 * cards contains all the cards in the deck.
 	 */
-	private List<Card> cards;
+	private List<Cards> cards;
 
 	/**
 	 * size is the number of not-yet-dealt cards.
@@ -32,11 +47,11 @@ public class Deck
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) 
 	{
-		this.cards = new ArrayList<Card>();
+		this.cards = new ArrayList<Cards>();
         for (int i = 0; i < ranks.length; i++) 
 		{
 			for(int s = 0; s < suits.length; s++ )
-				this.cards.add(new Card(ranks[i], suits[s], values[i]));
+				this.cards.add(new Cards(ranks[i], suits[s], values[i]));
         }
         this.size = this.cards.size();
 		shuffle();
@@ -74,7 +89,7 @@ public class Deck
 		 for (int k = cards.size() - 1; k > 0; k--) 
 		 {
 			int pos = (int)(Math.random() * (k + 1)); 
-			Card temp = cards.get(pos);
+			Cards temp = cards.get(pos);
 			cards.set(pos, cards.get(k));
 			cards.set(k, temp);
 		 }
@@ -85,7 +100,7 @@ public class Deck
 	 * @return the card just dealt, or null if all the cards have been
 	 *         previously dealt.
 	 */
-	public Card deal() 
+	public Cards deal() 
 	{ 
 		this.size = this.size - 1;
         if (this.size > 0) 
