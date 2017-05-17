@@ -1,149 +1,112 @@
-import java.util.List;
-import java.util.ArrayList;
-
 /**
- * The Deck class represents a shuffled deck of cards.
- * It provides several operations including
- *      initialize, shuffle, deal, and check if empty.
+ *  An object of type Deck represents a deck of playing cards.  The deck
+ *  is a regular poker deck that contains 52 regular cards and that can
+ *  also optionally include two Jokers.
  */
 public class Deck 
+{
+    /**
+     * An array of 52 or 54 cards.  A 54-card deck contains two Jokers,
+     * in addition to the 52 cards of a regular poker deck.
+     */
+    public Card[] deck;
+
+    /**
+     * Keeps track of the number of cards that have been dealt from
+     * the deck so far.
+     */
+    public int cardsDealt;
+
+    /**
+     * Constructs a regular 52-card poker deck.  Initially, the cards
+     * are in a sorted order.  The shuffle() method can be called to
+     * randomize the order.  (Note that "new Deck()" is equivalent
+     * to "new Deck(false)".)
+     */
+    public Deck() 
 	{
-		
-	Cards[] deck = new int[52];
-	int[] values = {1,2,3,4,5,6,7,8,9,10,11,12,13};
-    String[] suits = {"Spades", "Hearts", "Diamonds", "Clubs"};
-    String[] ranks = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
-	
-	for(int i = 0; i < deck.size; i++)
-	{
-		value = values[i];
-		rank = ranks[i];
-		for(String suit: suits)
+		deck = new Card[52];
+		String[] suit = {"Spades", "Hearts", "Diamonds", "Clubs"};
+		String[] rank = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+        int created = 0; // How many cards have been created so far.
+       
+		for (String r: rank)
 		{
-			deck[i] = new Cards(rank, suit, value);
+			for(String s: suit) 
+			{
+				for (int value = 1; value <= 13; value++) 
+				{
+					deck[created] = new Card(r, s, value);
+					created ++;
+				}
+			}
 		}
-	}
-	
-	/**
-	 * cards contains all the cards in the deck.
-	 */
-	private List<Cards> cards;
+        cardsDealt = 0;
+    }
 
-	/**
-	 * size is the number of not-yet-dealt cards.
-	 * Cards are dealt from the top (highest index) down.
-	 * The next card to be dealt is at size - 1.
-	 */
-	private int size;
-
-
-	/**
-	 * Creates a new <code>Deck</code> instance.<BR>
-	 * It pairs each element of ranks with each element of suits,
-	 * and produces one of the corresponding card.
-	 * @param ranks is an array containing all of the card ranks.
-	 * @param suits is an array containing all of the card suits.
-	 * @param values is an array containing all of the card point values.
-	 */
-	public Deck(String[] ranks, String[] suits, int[] values) 
+    /**
+     * Put all the used cards back into the deck (if any), and
+     * shuffle the deck into a random order.
+     */
+    /* public void shuffle() 
 	{
-		this.cards = new ArrayList<Cards>();
-        for (int i = 0; i < ranks.length; i++) 
+        for (int i = deck.length-1; i > 0; i-- ) 
 		{
-			for(int s = 0; s < suits.length; s++ )
-				this.cards.add(new Cards(ranks[i], suits[s], values[i]));
+            int position = (int)(Math.random()*(i+1));
+            Card temp = deck[i];
+            deck[i] = deck[position];
+            deck[rand] = temp;
         }
-        this.size = this.cards.size();
-		shuffle();
-	}
-
-
-	/**
-	 * Determines if this deck is empty (no undealt cards).
-	 * @return true if this deck is empty, false otherwise.
-	 */
-	public boolean isEmpty() 
-	{
-		if (this.cards.size()==0)
-		{
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * Accesses the number of undealt cards in this deck.
-	 * @return the number of undealt cards in this deck.
-	 */
-	public int size() 
-	{
-		return this.cards.size();
-	}
-
-	/**
-	 * Randomly permute the given collection of cards
-	 * and reset the size to represent the entire deck.
-	 */
+        cardsDealt = 0;
+    } */
+	
 	public void shuffle() 
 	{
-		 for (int k = cards.size() - 1; k > 0; k--) 
-		 {
-			int pos = (int)(Math.random() * (k + 1)); 
-			Cards temp = cards.get(pos);
-			cards.set(pos, cards.get(k));
-			cards.set(k, temp);
-		 }
-	}
-
-	/**
-	 * Deals a card from this deck.
-	 * @return the card just dealt, or null if all the cards have been
-	 *         previously dealt.
-	 */
-	public Cards deal() 
-	{ 
-		this.size = this.size - 1;
-        if (this.size > 0) 
+		for (int i = deck.length - 1; i > 0; i--) 
 		{
-            return this.cards.get(this.size);
-        }
-        return null;
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+			int pos = (int)(Math.random() * (i + 1)); 
+			Card temp = deck[i];
+			deck[i] = deck[pos];
+			deck[pos] = temp;
+		}
+		cardsDealt = 0;
 	}
 
-	/**
-	 * Generates and returns a string representation of this deck.
-	 * @return a string representation of this deck.
-	 */
-	@Override
-	public String toString() 
+    /**
+     * As cards are dealt from the deck, the number of cards left
+     * decreases.  This function returns the number of cards that
+     * are still left in the deck.  The return value would be
+     * 52 or 54 (depending on whether the deck includes Jokers)
+     * when the deck is first created or after the deck has been
+     * shuffled.  It decreases by 1 each time the dealCard() method
+     * is called.
+     */
+    public int left() 
 	{
-		String rtn = "size = " + size + "\nUndealt cards: \n";
+        return deck.length - cardsDealt;
+    }
 
-		for (int k = size - 1; k >= 0; k--) {
-			rtn = rtn + cards.get(k);
-			if (k != 0) {
-				rtn = rtn + ", ";
-			}
-			if ((size - k) % 2 == 0) {
-				// Insert carriage returns so entire deck is visible on console.
-				rtn = rtn + "\n";
-			}
+    /**
+     * Removes the next card from the deck and return it.  It is illegal
+     * to call this method if there are no more cards in the deck.  You can
+     * check the number of cards remaining by calling the cardsLeft() function.
+     * @return the card which is removed from the deck.
+     * @throws IllegalStateException if there are no cards left in the deck
+     */
+    public Card deal() 
+	{
+        if (cardsDealt == deck.length)
+		{
+			System.out.println("All cards have been dealt.");
 		}
-
-		rtn = rtn + "\nDealt cards: \n";
-		for (int k = cards.size() - 1; k >= size; k--) {
-			rtn = rtn + cards.get(k);
-			if (k != size) {
-				rtn = rtn + ", ";
-			}
-			if ((k - cards.size()) % 2 == 0) {
-				// Insert carriage returns so entire deck is visible on console.
-				rtn = rtn + "\n";
-			}
-		}
-
-		rtn = rtn + "\n";
-		return rtn;
-	}
+        else
+		{
+			cardsDealt++;
+		}			
+        
+		return deck[cardsDealt - 1];
+        // Programming note:  Cards are not literally removed from the array
+        // that represents the deck.  We just keep track of how many cards
+        // have been used.
+    }
 }
