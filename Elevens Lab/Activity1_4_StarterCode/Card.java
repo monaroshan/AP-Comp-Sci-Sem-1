@@ -3,7 +3,8 @@
  *
  * <code>Card</code> represents a playing card.
  */
-public class Card {
+public class Card 
+{
 
 	/**
 	 * String value that holds the suit of the card
