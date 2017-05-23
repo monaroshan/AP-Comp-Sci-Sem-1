@@ -1,40 +1,16 @@
+//gita's is the new and improved version of this 
+
+
+import java.util.Scanner;
 public class HighLow
 {
 	public static void main(String[] args)
 	{
+		
 		System.out.println("You will be playing a card game called HighLow. In HighLow, the user is randomly given the value");
 		System.out.println("of a card and must predict whether the next card in the deck will have a value higher or lower than");
 		System.out.println("the current card. If their prediction is incorrect, the user loses and the total number of points they");
 		System.out.println("have accumulated is their final score.");
-		
-		//int plays = 0;     // Number of games user has played.
-		//int ScoreSum = 0;     // The sum of all the scores from 
-                               //      all the games played.
-		/* double AvgScore;  */    // Average score, computed by dividing
-                               //      sumOfScores by gamesPlayed.
-		/* boolean OneMore;    */    // Record user's response when user is 
-                               //   asked whether he wants to play 
-                               //   another game.
-		
-		/* int onescore; 
-		
-		while (OneMore)
-		{
-			// Score for one game.
-			onescore = game();   // Play the game and get the score.
-			ScoreSum += onescore;
-			plays++;
-			System.out.print("Do you want to play one more time?" );
-			OneMore = TextIO.getlnBoolean();
-		} 
-	
-      
-      AvgScore = ((double)sumOfScores) / plays;
-      
-      System.out.println();
-      System.out.println(plays + "games were played");
-      System.out.println("Your average score is " + AvgScore); */
-   
    }  // end main()
    
 
@@ -45,7 +21,8 @@ public class HighLow
     */
    private static int game() 
    {
-   
+	  Scanner kb = new Scanner(System.in);
+	  
       Deck deck = new Deck();  
       int rightguesses;
       Card currentcard;  
@@ -53,8 +30,8 @@ public class HighLow
       String guess; 
       deck.shuffle(); 
       rightguesses = 0;
-      Card firstcard = deck.deal();
-      System.out.println("The first card is " + firstcard);
+      Card currentcard = deck.deal();
+      System.out.println("The first card is " + currentcard);
 	  
       while (true)
 	  {  // Loop ends when user's prediction is wrong.
@@ -63,7 +40,7 @@ public class HighLow
          
          System.out.println("Enter high if you think the next card will be higher. ");
 		 System.out.println("Enter low if you think the next card will be lower. ");
-		 guess = kb.nextLine;
+		 guess = kb.nextLine();
 		 
          while (guess != "high" && guess != "low") 
 		 {
@@ -80,13 +57,13 @@ public class HighLow
          
          // this checks the user's prediction.
          
-         if (nextcard.getpointValue() == currentcard.getpointValue()) 
+         if (nextcard.pointValue() == currentcard.pointValue()) 
 		 {
             System.out.println("Plot twist! The value was neither higher nor lower. It's a tie! You lose. Sucks to suck.");
             break;  // ends the game.
          }
 		 
-         else if (nextcard.getpointValue() < currentcard.getValue()) 
+         else if (nextcard.pointValue() < currentcard.pointValue()) 
 		 {
             if (guess == "low") 
 			{
@@ -132,7 +109,7 @@ public class HighLow
    }  // end play()
    
 
-} // end class HighLow
+} 
 
 	
 	
