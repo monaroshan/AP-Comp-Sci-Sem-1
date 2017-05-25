@@ -149,7 +149,7 @@ public class MagPie3
 		}
 		int psnOfI = findKeyword(statement, "I", 0);
 		int psnOfYou = findKeyword(phrase , "you", psnOfI + 1);
-		String restOfStatement = phrase.substring(psnOfI + 1, psnOfYou).trim();
+		String restOfStatement = phrase.substring(psnOfI + 1, psnOfYou);
 		return "Why do you " + restOfStatement + " me?";
 	}
 
