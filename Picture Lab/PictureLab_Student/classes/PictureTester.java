@@ -150,7 +150,7 @@ public class PictureTester
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
-    //testNegate();
+    testNegate();
     //testGrayscale();
 	//testMirrorVerticalRightToLeft();
 	//testMirrorHorizontal();
@@ -165,7 +165,7 @@ public class PictureTester
     //testCopy2();
 	//testmyCollage();
     //testEdgeDetection();
-    testEdgeDetection2();
+    //testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
